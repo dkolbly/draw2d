@@ -34,7 +34,7 @@ func ConvertPath(path *draw2d.Path, pdf Vectorizer) {
 			pdf.ArcTo(path.Points[i], path.Points[i+1], path.Points[i+2], path.Points[i+3],
 				0, // degRotate
 				path.Points[i+4]*deg,                    // degStart = startAngle
-				(path.Points[i+4]-path.Points[i+5])*deg) // degEnd = startAngle-angle
+				(path.Points[i+4]+path.Points[i+5])*deg) // degEnd = startAngle+angle
 			i += 6
 		case draw2d.CloseCmp:
 			pdf.LineTo(startX, startY)

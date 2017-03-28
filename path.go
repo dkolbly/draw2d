@@ -120,16 +120,16 @@ func (p *Path) ArcTo(cx, cy, rx, ry, startAngle, angle float64) {
 			startAngle += math.Pi * 2.0
 		}
 	}
-	startX := cx + math.Cos(startAngle)*rx
-	startY := cy + math.Sin(startAngle)*ry
+	startX := cx + math.Cos(-startAngle)*rx
+	startY := cy + math.Sin(-startAngle)*ry
 	if len(p.Components) > 0 {
 		p.LineTo(startX, startY)
 	} else {
 		p.MoveTo(startX, startY)
 	}
 	p.appendToPath(ArcToCmp, cx, cy, rx, ry, startAngle, angle)
-	p.x = cx + math.Cos(endAngle)*rx
-	p.y = cy + math.Sin(endAngle)*ry
+	p.x = cx + math.Cos(-endAngle)*rx
+	p.y = cy + math.Sin(-endAngle)*ry
 }
 
 // Close closes the current path
